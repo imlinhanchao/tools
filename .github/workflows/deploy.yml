@@ -30,8 +30,15 @@ jobs:
       - name: Build (tools)
         run: npm run build
         working-directory: ./tools
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./tools/dist
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
